@@ -1,23 +1,8 @@
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+RxString asalProv = "0".obs;
+RxString asalKota = "0".obs;
+RxString tujuanProv = "0".obs;
+RxString tujuanKota = "0".obs;
 }
