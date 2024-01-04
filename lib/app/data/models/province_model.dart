@@ -16,7 +16,9 @@ class Province {
     return data;
   }
   static List<Province> fromJsonList(List list) {
-    if (list.isEmpty) return List<Province>.empty();
-    return list.map((item) => Province.fromJson(item)).toList();
+    if (list == null || list.length == 0) return List<Province>.empty();
+    return list.map((e) => Province.fromJson(e)).toList();
   }
+  @override
+  String toString()=> province!;
 }
