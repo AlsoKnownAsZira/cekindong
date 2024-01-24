@@ -136,6 +136,22 @@ class HomeView extends GetView<HomeController> {
             const SizedBox(
               height: 20,
             ),
+            TextField(
+              controller: controller.beratController,
+              autocorrect: false,
+              keyboardType: TextInputType.number,
+              decoration: InputDecoration(
+                  labelText: "Berat Barang (gram)",
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 15,
+                  ),
+                  border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             DropdownSearch<Map<String, dynamic>>(
               items: [
                 {"code": "jne", "name": "Jalur Nugraha Ekakurir (JNE)"},
@@ -158,9 +174,18 @@ class HomeView extends GetView<HomeController> {
                     ,
               ),
               dropdownBuilder:(context, selectedItem) => Text("${selectedItem?["name"] ?? "Pilih Jasa Kirim"}") ,
+              onChanged:(value)=> controller.codeKurir.value  = value?['code'] ?? "" ,
             ),
           const  SizedBox(height: 20),
-          ElevatedButton(onPressed: (){}, child: const Text("Cek Ongkir Disini"))
+          Obx(() =>   ElevatedButton(
+          onPressed: () {
+            if (controller.isloading.isFalse){
+              controller.cekOngkir();
+            }
+          },
+    child: Text(controller.isloading.isFalse ? "Cek Ongkir" : "Loading..."),
+          ))
+        
           ],
         ));
   }
